@@ -21,7 +21,7 @@ import android.widget.Toast;
 import java.util.Locale;
 
 public class UserInfoActivity extends AppCompatActivity implements NetworkStateReceiver.NetworkStateReceiverListener{
-TextView id,name,email,address,company,phoneno,website;
+TextView id,name,email,address,company,phoneno,website,compname;
 String strName,strId,strEmail,strStreet,strSuite,strCity,strPhone,strCompanyName,strWebsite,strPincode;
     boolean net;
     private NetworkStateReceiver networkStateReceiver;
@@ -39,7 +39,7 @@ String strName,strId,strEmail,strStreet,strSuite,strCity,strPhone,strCompanyName
         company=findViewById(R.id.companyTextView);
         phoneno=findViewById(R.id.phoneTextView);
         website=findViewById(R.id.websiteTextView);
-
+compname=findViewById(R.id.companyTextUi);
         viewGroup = findViewById(android.R.id.content);
         View dialogView = LayoutInflater.from(this).inflate(R.layout.internet_dialog, viewGroup, false);
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -94,6 +94,13 @@ phoneno.setOnClickListener(new View.OnClickListener() {
         Uri dialUri = Uri.parse("tel:" +strPhone );
         Intent dialIntent = new Intent(Intent.ACTION_DIAL, dialUri);
         startActivity(dialIntent);
+    }
+});
+compname.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        Intent intent1=new Intent(UserInfoActivity.this,MainActivity2.class);
+        startActivity(intent1);
     }
 });
     }
